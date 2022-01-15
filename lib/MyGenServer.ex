@@ -33,8 +33,18 @@ defmodule KVStore do
   def handle_call({:get, k}, state) do
     {state[k], state}
   end
+
+  # interface
+  def put(server_pid, key, value) do
+    MyGenServer.call(server_pid, {:put, key, value})
+  end
+
+  def get(server_pid, key) do
+    MyGenServer.call(server_pid, {:get, key})
+  end
 end
 
 pid = MyGenServer.start(KVStore)
 IO.puts MyGenServer.call(pid, {:put, :name, "amirreza"})
 IO.puts MyGenServer.call(pid, {:get, :name})
+IO.puts KVStore.get(pid, :name)
