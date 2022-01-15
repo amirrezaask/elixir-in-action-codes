@@ -1,4 +1,4 @@
-defmodule Calculator do
+defmodule CalculatorRaw do
   def start do
     spawn(&handler/0)
   end
@@ -22,8 +22,8 @@ defmodule Calculator do
   end
 end
 
-server_pid = Calculator.start()
-Calculator.plus(server_pid, 2, 3)
+server_pid = CalculatorRaw.start()
+CalculatorRaw.plus(server_pid, 2, 3)
 receive do
   {:result, res} -> IO.puts res
 end
