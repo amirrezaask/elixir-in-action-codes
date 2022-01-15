@@ -1,4 +1,4 @@
-defmodule MyGenServer do
+defmodule MyGenserver do
   def start(mod) do
     spawn(fn ->
       initial_state = mod.init()
