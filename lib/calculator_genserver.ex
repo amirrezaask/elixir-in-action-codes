@@ -1,6 +1,6 @@
 defmodule CalculatorGenserver do
   use GenServer
-  def init() do
+  def init(_) do
 
   end
 

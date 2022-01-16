@@ -1,4 +1,4 @@
-defmodule MyGenserver do
+defmodule MyGenServer do
   def start(mod) do
     spawn(fn ->
       initial_state = mod.init()
@@ -58,8 +58,3 @@ defmodule KVStore do
     MyGenServer.call(server_pid, {:get, key})
   end
 end
-
-pid = MyGenServer.start(KVStore)
-IO.puts(MyGenServer.call(pid, {:put, :name, "amirreza"}))
-IO.puts(MyGenServer.call(pid, {:get, :name}))
-IO.puts(KVStore.get(pid, :name))
